@@ -1,0 +1,409 @@
+
+1
+
+/*
+
+A     |a,b
+       setAB(int x, int y);
+       displayAB();
+----------------------
+            |
+            |
+            V
+-----------------------
+B     |c,d;
+       setCD(int x, int y)
+       displayCD();
+*/
+
+#include<conio.h>
+#include<iostream>
+
+using namespace std;
+
+class A{
+      private:
+      int a,b;
+
+      public:
+            void setAB(int x , int y){
+                  a=x;
+                  b=y;
+            }
+            void displayAB(){
+                  cout<<"a = " <<a<<endl<<"b = "<<b<<endl;
+            }
+};
+
+class B: public A{
+      private:
+      int c,d;
+
+      public:
+            void setCD(int x , int y){
+                  c=x;
+                  d=y;
+            }
+            void displayCD(){
+                  cout<<"c = " <<c <<endl<<"d = " <<d;
+            }
+};
+
+int main(){
+      B b;
+
+      b.setAB(2,3);
+      b.setCD(4,5);
+
+      b.displayAB();
+      b.displayCD();
+
+
+      getch();
+      return 0;
+}
+
+
+2
+
+/*
+A     |a,b
+       inputAB();
+       displayAB();
+----------------------
+            |
+            |
+            V
+-----------------------
+B     |c,d;
+       inputCD();
+       displayCD();
+*/
+
+#include<conio.h>
+#include<iostream>
+
+using namespace std;
+
+class A{
+      private:
+      int a,b;
+
+      public:
+            void inputAB(){
+                  cout<<"enter a" <<endl;
+                  cin>>a;
+                  cout<<"enter b"<<endl;
+                  cin>>b;
+
+            }
+            void displayAB(){
+                  cout<<"a = " <<a<<endl<<"b = "<<b<<endl;
+            }
+};
+
+class B: public A{
+      private:
+      int c,d;
+
+      public:
+            void inputCD(){
+                  cout<<"enter c" <<endl;
+                  cin>>c;
+                  cout<<"enter d"<<endl;
+                  cin>>d;
+            }
+            void displayCD(){
+                  cout<<"c = " <<c <<endl<<"d = " <<d;
+            }
+};
+
+int main(){
+      B b;
+
+      b.inputAB();
+      b.inputCD();
+
+      b.displayAB();
+      b.displayCD();
+
+
+      getch();
+      return 0;
+}
+
+
+
+3
+
+/*
+A     |a,b
+       inputAB();
+----------------------
+            |
+            |
+            V
+-----------------------
+B     |c,d;
+       inputCD();
+       calculateSum();
+       displayAB();
+       displaySum();
+*/
+
+#include<conio.h>
+#include<iostream>
+
+using namespace std;
+
+class A{
+      protected:
+      int a,b;
+
+      public:
+            void inputAB(){
+                  cout<<"enter a" <<endl;
+                  cin>>a;
+                  cout<<"enter b"<<endl;
+                  cin>>b;
+
+            }
+};
+
+class B: public A{
+      private:
+      int c,d;
+
+      public:
+            void inputCD(){
+                  cout<<"enter c" <<endl;
+                  cin>>c;
+                  cout<<"enter d"<<endl;
+                  cin>>d;
+            }
+
+            void calculateSum(){
+                  c=a+b+c+d;
+            }
+
+            void displayAB(){
+                  cout<<"a = " <<a <<endl<<"b = " <<b<<endl;
+            }
+
+            void displaySum(){
+                  cout<<"sum = " <<c<<endl;
+            }
+};
+
+int main(){
+      B b;
+
+      b.inputAB();
+      b.inputCD();
+
+      b.calculateSum();
+
+      b.displayAB();
+      b.displaySum();
+
+
+
+      getch();
+      return 0;
+}
+
+
+4
+
+/*
+A     |a,b                          |B    |z;
+       setValoFXY(int a, int b);    |      setValoFZ();
+       displayXY();                 |      displayz();
+------------------------------------|---------------------------
+            |                                   |
+            |                                   |
+            V                                   V
+-------------------------------------------------------------
+B     |k , sum;
+       setK(int a);
+       calculateSum();
+       displayAll();
+       displaySum();
+*/
+
+#include<conio.h>
+#include<iostream>
+
+using namespace std;
+
+class A{
+      protected:
+            int a,b;
+
+      public:
+            void setValoFXY(int x, int y){
+                  a=x;
+                  b=y;
+            }
+
+            void displayXY(){
+                  cout<<"a = "<<a<<endl<<"b = "<<b<<endl;
+            }
+};
+
+class Z{
+      protected:
+            int z;
+
+      public:
+            void setValoFZ(){
+                  cout<<"enter z " <<endl;
+                  cin>>z;
+            }
+            void displayZ(){
+                  cout<<"z = "<<z<<endl;
+            }
+};
+
+class B : public A, public Z{
+      private:
+            int k , sum;
+
+      public:
+            void setK(int a){
+                  k=a;
+            }
+
+            void calculateSum(){
+                  sum= a+b+k+z;
+            }
+
+            void displayAll(){
+                  cout<<"a = "<<a<<endl<<"b = "<<b<<endl;
+                  cout<<"k = "<<k<<endl<<"z = "<<z<<endl;
+            }
+
+            void displaySum(){
+                  cout<<"sum = "<<sum<<endl;
+            }
+};
+
+int main(){
+      B b;
+
+      b.setValoFXY(2,4);
+      b.setValoFZ();
+      b.setK(6);
+
+      b.calculateSum();
+
+      b.displayXY();
+      b.displayZ();
+      b.displayAll();
+      b.displaySum();
+
+      getch();
+      return 0;
+}
+
+
+
+5
+
+/*
+student     |teacher
+name        |name
+add         |add
+----------------------
+            |
+            |
+            V
+-----------------------
+book
+name,sn;
+*/
+
+#include<conio.h>
+#include<iostream>
+#include<stdlib.h>
+
+using namespace std;
+
+class Student {
+      private:
+            char name[20],add[20];
+
+      public:
+            void stuInput(){
+                  cout<<"enter name of student "<<endl;
+                  cin.get(name,20);
+                  fflush(stdin);
+                  cout<<"enter address of student"<<endl;
+                  cin.get(add,20);
+                  fflush(stdin);
+            }
+
+            void stuDisplay(){
+                  cout<<"name of student = " <<name<<endl;
+                  cout<<"address of student = "<<add<<endl;
+            }
+};
+
+class Teacher{
+
+      private:
+            char name[20], add[20];
+
+      public:
+            void teachInput(){
+                  cout<<"enter name of teacher "<<endl;
+                  cin.get(name,20);
+                  fflush(stdin);
+                  cout<<"enter address of teacher"<<endl;
+                  cin.get(add,20);
+                  fflush(stdin);
+            }
+
+            void teachDisplay(){
+                  cout<<"teacher name = "<<name<<endl;
+                  cout<<"teacher address = "<<add<<endl;
+            }
+};
+
+class Book : public Student, public Teacher{
+
+      private:
+            char name[20], sn;
+
+      public:
+            void bookInput(){
+                  cout<<"enter name of book " <<endl;
+                  cin.get(name,20);
+                  fflush(stdin);
+                  cout<<"enter serial number "<<endl;
+                  cin>>sn;
+                  fflush(stdin);
+            }
+
+            void bookDisplay(){
+                  cout<<"book name = "<<name<<endl;
+                  cout<<"serial num = "<<sn<<endl;
+            }
+};
+
+int main(){
+      Book b;
+
+      b.stuInput();
+      b.teachInput();
+      b.bookInput();
+
+      b.stuDisplay();
+      b.teachDisplay();
+      b.bookDisplay();
+
+
+
+      getch();
+      return 0;
+}

@@ -1,0 +1,336 @@
+1
+
+/*
+
+Measurement |l,b
+            |---------------
+            |input();
+            |
+----------------------------------------------------
+                  |                       |
+                  |                       |
+                  V                       V
+-----------------------------------------------------
+            |                 ||          |
+Rectangle   |                 ||Square    |calcArea();
+            |calcArea();      ||          |displayArea();
+            |displayArea();   ||          |
+            |                 ||          |
+*/
+
+#include<iostream>
+#include<conio.h>
+
+using namespace std;
+
+int flag=1;
+
+class Measurement{
+      protected:
+            int l,b;
+
+      public:
+            void input(){
+                  if (flag == 1){
+                        cout<<"enter l and b "<<endl;
+                        cin>>l>>b;
+                        flag=0;
+                  }
+                  else{
+                        cout<<"enter l"<<endl;
+                        cin>>l;
+                  }
+            }
+};
+
+class Rectangle : public Measurement{
+      protected:
+            int area;
+
+      public:
+            void calcArea(){
+                  area = l*b;
+            }
+            void displayArea(){
+                  cout<<"rectangle area = "<<area<<endl;
+            }
+};
+
+class Square : public Measurement{
+      protected:
+            int area;
+
+      public:
+            void calcArea(){
+                  area = l*l;
+            }
+            void displayArea(){
+                  cout<<"square area = "<<area<<endl;
+            }
+};
+
+
+int main(){
+      Rectangle r;
+      Square s;
+
+      r.input();
+      s.input();
+
+      r.calcArea();
+      s.calcArea();
+
+      r.displayArea();
+      s.displayArea();
+
+
+
+      getch();
+      return 0;
+}
+
+
+=================================================================================
+
+2
+
+/*
+
+Book        |bName, bID
+            |---------------
+            |inputDetails();
+            |
+------------------------------------------------------------------------------------
+                  |                       |                             |
+                  |                       |                             |
+                  V                       V                             V
+------------------------------------------------------------------------------------
+            | name,roll       ||          |name       ||          |name
+Student     |-----------------||Teacher   |-----------|| Staff    |-------------
+            |input();         ||          |input();   ||          |input();
+            |display();       ||          |display(); ||          |display();
+            |                 ||          |           ||          |
+*/
+
+#include<iostream>
+#include<conio.h>
+#include<stdlib.h>
+
+using namespace std;
+
+class Book{
+      protected:
+            char bName[20];
+            int bID;
+
+      public:
+            void inputDetails(){
+                  cout<<"enter book name and book id "<<endl;
+                  cin.get(bName,20);
+                  cin>>bID;
+                  fflush(stdin);
+            }
+};
+
+class Student : public Book{
+      private:
+            char name[20];
+            int roll;
+
+      public:
+            void input(){
+                  cout<<"enter student name and roll number"<<endl;
+                  cin.get(name, 20);
+                  cin>>roll;
+                  fflush(stdin);
+            }
+            void display(){
+                  cout<<"student name = "<<name<<endl;
+                  cout<<"roll no = "<<roll<<endl;
+                  cout<<"reserved book name = "<<bName<<endl;
+                  cout<<"book id - "<<roll<<endl;
+            }
+};
+
+
+
+class Teacher : public Book{
+      private:
+            char name[20];
+
+      public:
+            void input(){
+                  cout<<"enter teacher name "<<endl;
+                  cin.get(name, 20);
+                  fflush(stdin);
+
+            }
+            void display(){
+                  cout<<"teacher name = "<<name<<endl;
+                  cout<<"reserved book name = "<<bName<<endl;
+                  cout<<"book id - "<<bID<<endl;
+            }
+};
+
+
+
+class Staff : public Book{
+      private:
+            char name[20];
+
+      public:
+            void input(){
+                  cout<<"enter staff name "<<endl;
+                  cin.get(name, 20);
+                  fflush(stdin);
+
+            }
+            void display(){
+                  cout<<"staff name = "<<name<<endl;
+                  cout<<"reserved book name = "<<bName<<endl;
+                  cout<<"book id - "<<bID<<endl;
+            }
+};
+
+int main(){
+      Student stu;
+      Teacher t;
+      Staff s;
+
+      stu.input();
+      stu.inputDetails();
+
+      t.input();
+      t.inputDetails();
+
+      s.input();
+      s.inputDetails();
+
+      stu.display();
+      t.display();
+      s.display();
+
+      getch();
+      return 0;
+}
+
+
+
+
+======================================================================
+
+3
+
+
+/*
+                  |
+University        |uName, uAddress
+                  |
+--------------------------------------------------------
+                  |
+                  |
+                  V
+-----------------------------------------------------------
+                  |
+AffilatedCollege  |cName,cAddress, noOfPrograms
+                  |
+-----------------------------------------------------------
+                  |
+                  |
+                  V
+-----------------------------------------------------------------
+                  |
+Student           |sName, sAddress, phone
+                  |
+*/
+
+
+#include<iostream>
+#include<conio.h>
+#include<stdlib.h>
+
+using namespace std;
+
+class University {
+      private:
+            char uName[20],uAddress[20];
+
+      public:
+            void uInput(){
+                  cout<<"enter name of university and its address "<<endl;
+                  cin.get(uName,20);
+                  fflush(stdin);
+                  cin.get(uAddress,20);
+                  fflush(stdin);
+            }
+            void uDisplay(){
+                  cout<<"university name = "<<uName<<endl;
+                  cout<<"university address = "<<uAddress<<endl;
+            }
+};
+
+
+
+class AffilatedColege: public University {
+      private:
+            char cName[20],cAddress[20];
+            int noOfPrograms;
+
+      public:
+            void cInput(){
+                  cout<<"enter name of college, its address and number of programs"<<endl;
+                  cin.get(cName,20);
+                  fflush(stdin);
+                  cin.get(cAddress,20);
+                  fflush(stdin);
+                  cin>>noOfPrograms;
+                  fflush(stdin);
+
+            }
+            void cDisplay(){
+                  cout<<"college name = "<<cName<<endl;
+                  cout<<"college address = "<<cAddress<<endl;
+                  cout<<"no of programs = "<<noOfPrograms<<endl;
+            }
+};
+
+
+
+class Student: public AffilatedColege{
+      private:
+            char sName[20],sAddress[20];
+            long long int phone;
+
+      public:
+            void sInput(){
+                  cout<<"enter name of student, its address and phone"<<endl;
+                  cin.get(sName,20);
+                  fflush(stdin);
+                  cin.get(sAddress,20);
+                  fflush(stdin);
+                  cin>>phone;
+
+            }
+            void sDisplay(){
+                  cout<<"student name = "<<sName<<endl;
+                  cout<<"student address = "<<sAddress<<endl;
+                  cout<<"phone = "<<phone<<endl;
+            }
+};
+
+int main(){
+
+      Student s;
+
+      s.uInput();
+      s.cInput();
+      s.sInput();
+
+      s.uDisplay();
+      s.cDisplay();
+      s.sDisplay();
+
+      getch();
+      return 0;
+}
+

@@ -1,0 +1,305 @@
+/*
+1
+wap to overload - unary operation using member function
+
+*/
+
+#include<iostream>
+#include<conio.h>
+
+using namespace std;
+
+class Alpha{
+      int n;
+
+      public:
+            Alpha(int x){
+                  n=x;
+            }
+
+            void operator -(){
+                  n=-n;
+            }
+
+            void display (){
+                  cout<<"n = "<<n<<endl;
+            }
+};
+
+int main(){
+      Alpha a(3);
+
+      a.display();
+
+      -a;
+
+      a.display();
+
+
+      getch();
+      return 0;
+}
+
+
+====================
+OUTPUT
+
+n = 3
+n = -3
+
+
+
+==================================================================================
+
+/*
+2
+wap to overload ++ unary operation (prefix)
+
+*/
+
+#include<iostream>
+#include<conio.h>
+
+using namespace std;
+
+class Alpha{
+      int n;
+
+      public:
+            Alpha(int x){
+                  n=x;
+            }
+
+            void operator ++(){
+                  ++n;
+            }
+
+            void display (){
+                  cout<<"n = "<<n<<endl;
+            }
+};
+
+int main(){
+      Alpha a(3);
+
+      a.display();
+
+      ++a;
+
+      a.display();
+
+
+      getch();
+      return 0;
+}
+
+
+==================================================
+output
+
+n = 3
+n = 4
+
+
+
+
+========================================================================
+
+/*
+3
+wap to add two complex number by over loading binary
+operator
+*/
+
+#include<iostream>
+#include<conio.h>
+
+using namespace std;
+
+class  Complex{
+      int real, img;
+
+      public:
+            Complex(int x, int y){
+                  real=x;
+                  img=y;
+            }
+
+            void operator +(Complex c2){
+                  real=real+c2.real;
+                  img=img+c2.img;
+            }
+
+            void display();
+
+
+
+};
+
+void Complex:: display(){
+      cout<<"complex number= "<<real<<" +i "<<img<<endl;
+}
+
+int main(){
+      Complex c1(2,4),c2(5,8);
+
+      c1.display();
+      c2.display();
+
+      cout<<"sum"<<endl;
+
+      c1+c2;
+
+      c1.display();
+
+      getch();
+      return 0;
+}
+
+
+=============================================================
+output
+
+complex number= 2 +i 4
+complex number= 5 +i 8
+sum
+complex number= 7 +i 12
+
+
+
+
+
+
+=================================================================
+
+
+/*
+4
+wap to overload -- unary operation (prefix)
+
+*/
+
+#include<iostream>
+#include<conio.h>
+
+using namespace std;
+
+class Alpha{
+      int n;
+
+      public:
+            Alpha(int x){
+                  n=x;
+            }
+
+            void operator --(){
+                  --n;
+            }
+
+            void display (){
+                  cout<<"n = "<<n<<endl;
+            }
+};
+
+int main(){
+      Alpha a(3);
+
+      a.display();
+
+      --a;
+
+      a.display();
+
+
+      getch();
+      return 0;
+}
+
+
+=============================================
+
+output
+
+n = 3
+n = 2
+
+
+
+
+
+=====================================================================
+
+/*
+5
+wap to add two time (hr:mm:ss) using bninary plus(+) operator
+*/
+
+#include<iostream>
+#include<conio.h>
+
+using namespace std;
+
+
+class Time{
+      int hr,mm,ss;
+
+      public:
+            Time(){}
+            Time (int x , int y , int z){
+                  hr=x;
+                  mm=y;
+                  ss=z;
+            }
+
+            Time operator +(Time t){
+                Time temp;
+
+                temp.ss=ss+ t.ss;
+                temp.mm=temp.ss/60;
+                temp.ss=temp.ss%60;
+
+                temp.mm=temp.mm+mm+t.mm;
+                temp.hr=temp.mm/60;
+                temp.mm=temp.mm%60;
+
+                temp.hr=temp.hr+hr+t.hr;
+
+                return temp;
+            }
+
+            void display();
+};
+
+void Time::display(){
+      cout<<"time = ("<<hr<<" : "<<mm<<" : "<<ss<<")"<<endl;
+}
+
+
+int main(){
+      Time t1(2,55,44), t2(3,36,27),t3;
+
+      t1.display();
+      t2.display();
+
+      t3=t1+t2;
+      cout<<"sum"<<endl;
+
+      t3.display();
+
+      getch();
+      return 0;
+}
+======================================
+
+output
+
+time = (2 : 55 : 44)
+time = (3 : 36 : 27)
+sum
+time = (6 : 32 : 11)
+
+
+
+
+
+

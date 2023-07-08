@@ -1,0 +1,354 @@
+/*
+1
+wap to convert polar to  rectangular   co-ordinates
+
+*/
+
+
+#include<iostream>
+#include<conio.h>
+#include<math.h>
+
+using namespace std;
+
+class Rectangular {
+      float xCod, yCod;
+
+      public:
+            Rectangular(){}
+
+            Rectangular ( float x, float y){
+                  xCod = x;
+                  yCod = y;
+            }
+
+            float getXcod(){
+                  return xCod;
+            }
+
+            float getYcod(){
+                  return yCod;
+            }
+
+            void display(){
+                  cout<<"rectangular co-ordinates = ( "<<xCod<<" , "<<yCod<<" )"<<endl;
+            }
+};
+
+class Polar {
+      float radius , angle;
+
+      public:
+            Polar(){}
+
+            Polar(float r, float a){
+                  radius = r;
+                  angle = a;
+            }
+
+            operator Rectangular(){
+                  float x, y;
+
+                  x = radius * cos(angle);
+                  y = radius * sin(angle);
+
+                  return Rectangular(x,y);
+            }
+
+            void display(){
+                  cout<<"polar co-ordinates = ( r= "<<radius<<" , @= "<<angle<<" )"<<endl;
+            }
+};
+
+int main(){
+      Rectangular r;
+      Polar p(10, 0.78);
+
+      r=p;
+
+      p.display();
+      r.display();
+
+      return 0;
+}
+
+
+---------------------------------------------------------------------
+
+polar co-ordinates = ( r= 10 , @= 0.78 )
+rectangular co-ordinates = ( 7.10914 , 7.03279 )
+
+
+=================================================================================
+
+
+/*
+2
+wap to convert rectangular to polar co-ordinates
+
+*/
+
+
+#include<iostream>
+#include<conio.h>
+#include<math.h>
+
+using namespace std;
+
+class Rectangular {
+      float xCod, yCod;
+
+      public:
+            Rectangular(){}
+
+            Rectangular ( float x, float y){
+                  xCod = x;
+                  yCod = y;
+            }
+
+            float getXcod(){
+                  return xCod;
+            }
+
+            float getYcod(){
+                  return yCod;
+            }
+
+            void display(){
+                  cout<<"rectangular co-ordinates = ( "<<xCod<<" , "<<yCod<<" )"<<endl;
+            }
+};
+
+class Polar {
+      float radius , angle;
+
+      public:
+            Polar(){}
+
+            Polar(float r, float a){
+                  radius = r;
+                  angle = a;
+            }
+
+            polar (Rectangular r){
+                  float x,y;
+
+                  x= r.getXcod();
+                  y= r.getYcod();
+
+                  radius= sqrt(pow(x,2)+pow(y,2));
+                  angle = atan(y/x);
+            }
+
+            void display(){
+                  cout<<"polar co-ordinates = ( r= "<<radius<<" , @= "<<angle<<" )"<<endl;
+            }
+};
+
+int main(){
+      Rectangular r(7,7);
+      Polar p;
+
+      p=r;
+
+      r.display();
+      p.display();
+
+
+
+
+      return 0;
+}
+
+----------------------------------------------------------------------------
+
+rectangular co-ordinates = ( 7 , 7 )
+polar co-ordinates = ( r= 9.8995 , @= 0.785398 )
+
+
+
+===============================================================================
+
+
+
+/*
+3
+wap to illustrate pointer to derived class object (use virtual function wherever
+                                                   necessary )
+
+*/
+
+#include<iostream>
+#include<conio.h>
+
+using namespace std;
+
+class Base{
+      public:
+            virtual void showDetails(){
+                  cout<<"base member  activated"<<endl;
+            }
+};
+
+class Derived: public Base {
+      public:
+            void  showDetails(){
+                  cout<<"derived member activated"<<endl;
+            }
+};
+
+
+int main(){
+      Base *bptr;
+      Base b;
+      Derived d;
+
+      cout<<"base pointer requesting base class member"<<endl;
+      bptr= &b;
+      bptr->showDetails();
+
+      cout<<"base pointer requesting derived class member"<<endl;
+      bptr= &d;
+      bptr->showDetails();
+
+      return 0;
+}
+
+-------------------------------------------------------------------------------
+
+base pointer requesting base class member
+base member  activated
+base pointer requesting derived class member
+derived member activated
+
+
+
+
+====================================================================================
+
+
+/*
+4
+wap to illustrate the use of this pointer
+
+*/
+
+#include<iostream>
+#include<conio.h>
+
+using namespace std; 
+
+class Numbers{
+      int a,b;
+
+      public:
+            Numbers(int a, int b){
+                  this->a=a;
+                  this->b=b;
+            }
+
+            void display(){
+                  cout<<"a = "<<a<<endl<<"b = "<<b<<endl;
+            }
+};
+
+
+int main(){
+      Numbers n(2,4);
+
+      n.display();
+
+
+      getch();
+      return 0;
+}
+
+
+
+------------------------------------------------------------------------
+
+a = 2
+b = 4
+
+======================================================================
+
+
+
+/*
+5
+create an abstract class University which has showDetails() method and this class
+derives a class named College and this class further derives another class called
+Student. you are requited to display the information of college & student
+
+*/
+
+#include<iostream>
+#include<string.h>
+
+using namespace std;
+
+class University{
+
+      public:
+            virtual void showDetails()=0;
+};
+
+class College: public University {
+      private:
+      char name[20],address[20];
+
+      public:
+            College(){}
+
+            College(char n[] , char a[]){
+                  strcpy(name,n);
+                  strcpy(address,a);
+            }
+
+            void showDetails(){
+                  cout<<"college name = " <<College::name<<endl
+                  <<"address = "<<address<<endl;
+            }
+
+
+};
+
+class Student: public College  {
+      char name[20];
+      int roll;
+
+      public:
+            Student(){}
+            Student(char n[] , int r ){
+                  strcpy(name,n);
+                  roll=r;
+            }
+
+            void showDetails(){
+                  cout<<"student name = "<<name<<endl
+                  <<"roll no = "<<roll<<endl;
+            }
+};
+
+int main(){
+      University *uptr;
+	  Student s("akash ", 44);
+	  College c("eec","sanepa");
+
+
+      uptr= &c;
+      uptr->showDetails();
+	  uptr= &s;
+      uptr->showDetails();
+
+      return 0;
+}
+
+
+----------------------------------------------------------------------------------------------
+
+college name = eec
+address = sanepa
+student name = akash
+roll no = 44
+
