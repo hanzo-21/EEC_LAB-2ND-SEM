@@ -1,0 +1,219 @@
+//using a class wap to take 3 inputs : principle time ,rate.keeping rate of 5%
+//as the defalult argument. calcualte simple interest for 10 customers.
+
+#include<conio.h>
+#include<iostream>
+
+using namespace std;
+
+class Interest {
+      private:
+            int time;
+            float principle, rate;
+
+      public:
+            void set_data(float p, int t, float r=5){
+                  principle=p;
+                  time=t;
+                  rate=r;
+            }
+            void simpleIntrest(){
+                  cout<<"simple interest = "<<(principle*time*rate)/100<<endl;
+
+            }
+
+};
+
+int main(){
+      Interest si[10];
+
+      int i,t;
+      float p,r;
+
+      for (i=0; i<10;i++){
+            cout<<"enter principle "<<endl;
+            cin>>p;
+            cout<<"enter time in year "<<endl;
+            cin>>t;
+
+            if(i>5){
+                  cout<<"enter rate " <<endl;
+                  cin>>r;
+                  si[i].set_data(p,t,r);
+            }
+            else{
+                  si[i].set_data(p,t);
+            }
+      }
+
+      for(i=0;i<10;i++){
+            si[i].simpleIntrest();
+      }
+
+      getch();
+      return 0;
+}
+
+
+
+
+
+------------------------------------------------------------------------------------------------------------
+
+
+
+/*
+wap to find the sum of 2 complex number using  frined class;
+*/
+#include<conio.h>
+#include<iostream>
+
+
+using namespace std;
+
+class ComplexB;
+class ComplexA{
+
+	private:
+		int r,i;
+
+	public:
+		void input();
+		friend ComplexB;
+};
+
+void ComplexA::input(){
+	cout<<"enter real number"<<endl;
+	cin>>r;
+	cout<<"enter imaginary number"<<endl;
+	cin>>i;
+}
+
+class ComplexB{
+
+	private:
+		int r,i;
+
+	public:
+		void input();
+		void sumOfComplex(ComplexA c1);
+};
+
+void ComplexB::input(){
+	cout<<"enter real number"<<endl;
+	cin>>r;
+	cout<<"enter imaginary number"<<endl;
+	cin>>i;
+}
+
+
+void ComplexB::sumOfComplex(ComplexA c1){
+
+      cout <<"sum of complex numbers = "<<c1.r+ r;
+      cout <<" + i "<<c1.i+ i<<endl;
+}
+
+
+int main(){
+	ComplexA c1;
+	ComplexB c2;
+
+	c1.input();
+	c2.input();
+
+	c2.sumOfComplex(c1);
+
+	getch();
+	return 0;
+}
+
+
+
+
+------------------------------------------------------------------------------------------------------------
+
+
+/*
+wap to input marks of 5 subjects of n students and display weather they are passed or
+not(pass make for each mark is 45 out of 100 )using dynamic memory allocation
+
+*/
+#include<conio.h>
+#include<iostream>
+
+using namespace std;
+
+class Student{
+      private:
+            int mark[5],i,isPassed;
+
+      public:
+            Student(){
+                  isPassed=1;
+            }
+
+            void input (){
+                  for(i=0;i<5;i++){
+                        cout<<"subject "<<i+1<<endl;
+                        cin>>mark[i];
+                  }
+            }
+
+            void display(){
+                  for(i=0; i<5 ; i++){
+                        if(mark[i]<45){
+                              isPassed=0;
+                              break;
+                        }
+                  }
+
+
+                  if (isPassed==0){
+                        cout<<" failed"<<endl;
+                  }
+                  else{
+                        cout<<" passed"<<endl;
+                  }
+
+            }
+
+};
+
+int main(){
+
+      Student *s;
+
+      int n,i;
+
+      cout<<"enter number of students "<<endl;
+      cin>>n;
+
+      s=new Student [n];
+
+      for(i=0;i<n;i++){
+            cout<<endl<<"student "<<i+1<<endl;
+            s[i].input();
+      }
+
+      cout<<endl<<"result"<<endl;
+
+      for(i=0;i<n;i++){
+            cout<<"student "<<i+1;
+            s[i].display();
+      }
+
+      delete []s ;
+
+
+
+      getch();
+      return 0;
+}
+
+
+
+
+
+
+
+------------------------------------------------------------------------------------------------------------

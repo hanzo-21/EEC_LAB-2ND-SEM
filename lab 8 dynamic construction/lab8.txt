@@ -1,0 +1,303 @@
+1
+/*
+wap to find the smple intrest using soncept of
+dynaminc initilization of object
+*/
+
+#include<conio.h>
+#include<iostream>
+
+using namespace std;
+
+class SimpleIntrest{
+      int time;
+      float principle, rate,si;
+
+      public:
+            void set_data(float p, int t, float r){
+                  principle=p;
+                  time = t;
+                  rate = r;
+            }
+
+            void intrest(){
+                  si= (principle*time*rate)/100;
+            }
+
+            void display(){
+                  cout<<"simple interest = "<<si<<endl;
+            }
+};
+
+int main(){
+
+      SimpleIntrest *s;
+      int t;
+      float p , r;
+      s= new SimpleIntrest ;
+
+      cout<<"enter princliple "<<endl;
+      cin>>p;
+      cout<<"enter time "<<endl;
+      cin>>t;
+      cout<<"enter rate"<<endl;
+      cin>>r;
+
+      s->set_data(p,t,r);
+
+      s->intrest();
+
+      s->display();
+
+      delete s;
+
+      getch();
+      return 0;
+}
+
+
+
+-------------------------------------------------------------------------------------
+
+2
+
+/*
+wap to input 5 numbers  and count even number and display
+id using dynami constructoir
+*/
+
+#include<conio.h>
+#include<iostream>
+
+using namespace std;
+
+class CountEve{
+      int *num;
+      int i, Count;
+
+      public:
+            CountEve(){
+                  num= new int [5];
+                  Count=0;
+            }
+
+            void input(){
+                  cout<<"enter 5 numbers"<<endl;
+                  for(i=0;i<5;i++){
+                        cin>>num[i];
+                  }
+            }
+
+            void display(){
+            for(i=0; i <5 ; i++){
+                  if (num[i]%2 == 0)
+                        Count++;
+
+            }
+            cout<<"number of even number "<<Count<<endl;
+            delete [] num;
+            }
+};
+
+int main(){
+
+      CountEve c;
+
+      c.input();
+
+      c.display();
+
+
+
+      getch();
+      return 0;
+}
+
+
+
+
+
+
+-------------------------------------------------------------------------------------
+
+
+3
+
+/*
+wap to input name, address, phone of n college and
+display
+*/
+
+#include<conio.h>
+#include<iostream>
+#include<stdlib.h>
+
+using namespace std;
+
+class CollegeInfo{
+      char name[20], address[20];
+      long long int phone;
+
+      public:
+            void input();
+            void display();
+
+};
+
+void CollegeInfo::input(){
+      fflush(stdin);
+      cout<<"enter name of college"<<endl;
+      cin.get(name, 20);
+      fflush(stdin);
+      cout<<"enter address " <<endl;
+      cin.get(address, 20);
+      fflush(stdin);
+      cout<<"enter phone number"<<endl;
+      cin>>phone;
+      fflush(stdin);
+}
+
+void CollegeInfo::display(){
+      cout<<name<<"\t\t"<<address<<"\t\t"<<phone<<endl;
+}
+
+int main(){
+      CollegeInfo *c;
+
+      int i ,n;
+
+      cout<<"enter number of college"<<endl;
+      cin>>n;
+
+      c= new CollegeInfo [n];
+
+      cout<<"enter data for "<<endl;
+
+      for(i=0;i<n;i++){
+            cout<<"college "<<i+1<<endl;
+            c[i].input();
+      }
+
+      cout<<endl<<"college info  "<<endl;
+
+      cout<<"name \t\taddress\t\tphonen" <<endl;
+      for(i=0;i<n;i++){
+            c[i].display();
+      }
+
+      delete [] c;
+
+      getch();
+      return 0;
+}
+
+
+
+
+
+
+
+-------------------------------------------------------------------------------------
+
+
+
+4
+
+
+/*
+wap to input name and phone number of n person and
+add a method that searches phone number and display
+name and phone number if found (use break if necessary)
+*/
+
+
+#include<conio.h>
+#include<iostream>
+#include<stdlib.h>
+
+using namespace std;
+
+class PhoneBook{
+
+      private:
+            char name[20];
+            long long int phone ;
+
+      public:
+            void input();
+            void display();
+            int searchProtocal(long long int);
+};
+
+void PhoneBook::input(){
+      fflush(stdin);
+      cout<<"enter name"<<endl;
+      cin.get(name,20);
+      fflush(stdin);
+      cout<<"enter phone number"<<endl;
+      cin>>phone;
+      fflush(stdin);
+}
+
+void PhoneBook::display(){
+      cout<<"name  = "<<name<<endl;
+      cout<<"phone = "<<phone<<endl;
+}
+
+int PhoneBook::searchProtocal(long long int s){
+      if (s == phone)
+            return 1;
+}
+
+int main(){
+
+      PhoneBook *p;
+
+      int n,i,flag=0;
+      long long int Search;
+
+      cout<<"enter number of contacts "<<endl;
+      cin>>n;
+
+      p = new PhoneBook [n];
+
+      for(i=0; i<n ; i++){
+            cout<<"for contact "<<i+1<<endl;
+            p[i].input();
+      }
+
+      fflush(stdin);
+
+      cout<<"enter number to search " <<endl;
+      cin>>Search;
+
+      for(i=0; i<n ; i++){
+            flag = p[i].searchProtocal(Search);
+            if (flag == 1){
+                  break;
+            }
+      }
+
+      if(flag == 1 ){
+            cout<<endl<<"contact found"<<endl;
+            p[i].display();
+       }
+      else
+            cout<<endl<<"contact not found "<<endl;
+
+
+      getch();
+      return 0;
+}
+
+
+
+
+
+
+-------------------------------------------------------------------------------------
+
+
+
+
+
