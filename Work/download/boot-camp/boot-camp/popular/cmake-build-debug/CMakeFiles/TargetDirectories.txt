@@ -1,0 +1,3 @@
+/home/santa/work/Lecture/eec/Project and Research/Seminars/2022-03-27/work/popular/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+/home/santa/work/Lecture/eec/Project and Research/Seminars/2022-03-27/work/popular/cmake-build-debug/CMakeFiles/edit_cache.dir
+/home/santa/work/Lecture/eec/Project and Research/Seminars/2022-03-27/work/popular/cmake-build-debug/CMakeFiles/popular.dir

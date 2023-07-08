@@ -1,0 +1,12 @@
+# depslib dependency file v1.0
+1648448315 source:c:\users\dell\desktop\work\spellerr\main.cpp
+	<iostream>
+	<conio.h>
+	"file_utils.h"
+
+1648448315 c:\users\dell\desktop\work\spellerr\file_utils.h
+
+1648450056 source:c:\users\dell\desktop\work\spellerr\file_utils.cpp
+	<stdlib.h>
+	<stdio.h>
+
