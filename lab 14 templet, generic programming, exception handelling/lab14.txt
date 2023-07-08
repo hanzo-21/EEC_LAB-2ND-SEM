@@ -1,0 +1,428 @@
+/*
+1
+warp to find the maximim number amoung two int, two float  using class template
+*/
+
+#include<iostream>
+
+using namespace std;
+
+template<class T>
+
+class Maximum {
+      T a , b;
+
+      public:
+            Maximum(T x, T y){
+                  a=x;
+                  b=y;
+            }
+            void displayMaximum (){
+                  cout<<(a>b?a:b)<<" is the maximum"<<endl;
+            }
+};
+
+int main(){
+
+      Maximum<int> i(2,5);
+      Maximum<float> f(6.77,6.76);
+
+      i.displayMaximum();
+      f.displayMaximum();
+
+      return 0;
+}
+---------------------------------------------------------------
+5 is the maximum
+6.77 is the maximum
+
+
+================================================================================
+
+/*
+2
+wap to add two int, two float and one float one int using class template
+*/
+#include<iostream>
+
+using namespace std;
+
+template<class T1,class T2>
+
+class Addition {
+      T1 a;
+      T2 b;
+
+      public:
+            Addition(T1 x , T2 y ){
+                  a=x;
+                  b=y;
+            }
+
+            void displaySum(){
+                  cout<< "sum = "<<a+b<<endl;
+            }
+};
+
+int main(){
+      Addition<int,int> ii(3,4);
+      Addition<float,float> ff(2.55,9.44);
+      Addition<float , int > fi(6.67,2);
+
+      ii.displaySum();
+      ff.displaySum();
+      fi.displaySum();
+
+
+
+      return 0;
+}
+
+
+------------------------------------------------------------------
+
+sum = 7
+sum = 11.99
+sum = 8.67
+
+
+===========================================================================
+
+
+/*
+3
+wap create a class template to find the scaler products of vectors of integer
+and vectors of floating point numbers
+*/
+
+#include<iostream>
+
+using namespace std;
+
+template<class T>
+
+class Vector {
+      T x,y,z, result;
+
+      public:
+            Vector(T a, T b, T c){
+                  x=a;
+                  y=b;
+                  z=c;
+            }
+
+            void claculateScalerProduct(Vector v){
+                  result= x*v.x+y*v.y+z*v.z;
+            }
+
+            void diisplayResult(){
+                  cout<<"scaler product =  "<<result<<endl;
+            }
+};
+
+
+int main(){
+      Vector <int> i1(2,3,4), i2(5,6,7);
+      Vector<float> f1(3.5,6.7,5.6), f2(1.1,5.88,3.77);
+
+      i1.claculateScalerProduct(i2);
+      f1.claculateScalerProduct(f2);
+
+      i1.diisplayResult();
+      f1.diisplayResult();
+
+      return 0;
+}
+
+-----------------------------------------------------------
+
+
+scaler product =  56
+scaler product =  64.358
+
+
+=================================================================================
+
+
+/*
+4
+wap to create a function template to sawp two values
+*/
+
+#include<iostream>
+
+using namespace std;
+
+template<class T>
+void swapping(T &n1, T &n2){
+      T temp;
+      temp=n1;
+      n1=n2;
+      n2=temp;
+}
+
+template<class T>
+void display(T a, T b){
+      cout<<" 1st number =  "<<a<<endl
+      <<"2nd number = "<<b<<endl;
+}
+
+int main(){
+      int a=5,b=7;
+      float x=6.88,y=7.99;
+
+      cout<<"before swapping"<<endl
+      <<"integers "<<endl;
+      display(a,b);
+      cout<<"floating points"<<endl;
+      display(x,y);
+
+      swapping(a,b);
+      swapping(x,y);
+
+      cout<<endl<<"after swapping"<<endl
+      <<"integers "<<endl;
+      display(a,b);
+      cout<<"floating points"<<endl;
+      display(x,y);
+
+
+
+      return 0;
+}
+
+
+------------------------------------------------------------------------
+
+before swapping
+integers
+ 1st number =  5
+2nd number = 7
+floating points
+ 1st number =  6.88
+2nd number = 7.99
+
+after swapping
+integers
+ 1st number =  7
+2nd number = 5
+floating points
+ 1st number =  7.99
+2nd number = 6.88
+
+
+=============================================================================
+
+
+/*
+5
+create function template to clculate the sum and average of numbers
+*/
+
+#include<iostream>
+#include<conio.h>
+
+using namespace std;
+
+template<class T>
+class Numbers {
+       T *num , sum;
+      int i,n;
+
+      float average;
+
+      public:
+            Numbers (int n){
+                  this->n=n;
+                  num=new T [n];
+                  cout<<"enter "<<n<<"number"<<endl;
+                  for(i=0;i<n;i++){
+                        cin>>num[i];
+                  }
+            }
+
+            ~Numbers(){
+                  delete [] num;
+            }
+
+            void totalAndAverge();
+            void display();
+
+
+};
+
+template<class T>
+void Numbers<T>::totalAndAverge(){
+      for(i=0,sum=0;i<n;i++){
+            sum+=num[i];
+      }
+
+      average=sum/n;
+}
+
+template <class T>
+void Numbers<T>::display(){
+      cout<<"sum = "<<sum<<endl
+      <<"average = "<<average<<endl;
+}
+
+int main(){
+
+      cout<<"for integer "<<endl;
+
+      Numbers <int> i(5);
+
+      cout<<"for integer "<<endl;
+      Numbers<float> f(4);
+
+      i.totalAndAverge();
+      f.totalAndAverge();
+
+      cout<<"for integer "<<endl;
+      i.display();
+      cout<<"for floating point"<<endl;
+      f.display();
+
+
+      return 0;
+}
+-------------------------------------------------------
+
+for integer
+enter 5number
+2
+5
+4
+4
+7
+for integer
+enter 4number
+2.44
+5.55
+6.73
+3.667
+for integer
+sum = 22
+average = 4.4
+for floating point
+sum = 18.387
+average = 4.59675
+
+
+==================================================
+
+/*
+6
+wap to illustrate the use of single try catch statement
+*/
+
+#include<iostream>
+
+using namespace std;
+
+int main(){
+      float a,b,div;
+
+      cout<<"enter a and  b "<<endl;
+      cin>>a>>b;
+
+      try {
+            if(b==0){
+                  throw b;
+            }
+            div=a/b;
+            cout<<"a/b = "<<div<<endl;
+      }
+
+      catch(float n ){
+            cout<<"cannot be divisibale by "<<0<<endl;
+      }
+
+      return 0;
+}
+---------------------------------------------------------
+
+enter a and  b
+2
+7
+a/b = 0.285714
+
+-----------------------------------------------------------
+
+enter a and  b
+2
+0
+cannot be divisibale by 0
+
+===============================================================================
+
+/*
+7
+wap to illustrate the use of multiple catch ststement
+*/
+
+#include<iostream>
+
+using namespace std;
+
+int main(){
+      int a,b,c,d;
+      float m,div;
+
+      cout<<"enter a,b,c,d "<<endl;
+      cin>>a>>b>>c>>d;
+
+      try{
+            if(b==0){
+                  throw b;
+            }
+            if(c==d){
+                  throw 'c';
+            }
+
+            div = (float) a/b;
+            m=(a-b)/(c-d);
+
+            cout<<"div a/b = "<<div<<endl;
+            cout<<"slope m = "<<m<<endl;
+
+      }
+
+      catch(int n){
+            cout<<"cannot be divisbale by "<<n<<endl;
+      }
+      catch(char e){
+            cout<<"denotminators cannot be equals"<<endl;
+      }
+
+
+
+      return 0;
+}
+
+------------------------------------------------------------
+
+enter a,b,c,d
+2
+0
+8
+6
+cannot be divisbale by 0
+--------------------------------------------------------------
+
+enter a,b,c,d
+1
+2
+3
+3
+denotminators cannot be equals
+
+--------------------------------------------------------------------
+
+enter a,b,c,d
+3
+6
+7
+9
+div a/b = 0.5
+slope m = 1
